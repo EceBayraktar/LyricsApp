@@ -1,0 +1,39 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 50px;
+  }
+  
+  .container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  input {
+    margin: 10px;
+    padding: 10px;
+    width: 250px;
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  pre {
+    background: #eee;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border-radius: 10px;
+  }
+  
