@@ -37,5 +37,6 @@ body {
     white-space: pre-wrap;
     word-wrap: break-word;
     border-radius: 10px;
-  }
-  
+    max-height: 300px; /* Maksimum yükseklik sınırı koyduk */
+    overflow-y: auto; /* Taşarsa dikey kaydırma çubuğu gösterilecek */
+}
