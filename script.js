@@ -6,13 +6,7 @@ function getLyrics() {
       alert("Please enter both artist and song title.");
       return;
     }
-    document.addEventListener('keydown', function(event) {
-        if (event.key === "Enter") {
-          getLyrics();
-        }
-      });
-      
-  
+
     fetch(`https://api.lyrics.ovh/v1/${artist}/${song}`)
       .then(response => response.json())
       .then(data => {
@@ -26,5 +20,11 @@ function getLyrics() {
         console.error('Error fetching lyrics:', error);
         document.getElementById('lyrics').innerText = "Error fetching lyrics.";
       });
+}
+
+// Kullanıcı Enter tuşuna basarsa da şarkı sözünü getir
+document.addEventListener('keydown', function(event) {
+  if (event.key === "Enter") {
+    getLyrics();
   }
-  
+});
