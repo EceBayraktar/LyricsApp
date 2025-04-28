@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    padding: 0;
+    padding: 50px;
     background: linear-gradient(135deg, #a7333f, #949197); /* Mor tonlarında bir geçişli renk */
     background-size: cover;
     height: 100vh;
