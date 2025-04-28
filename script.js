@@ -3,7 +3,7 @@ function getLyrics() {
     const song = document.getElementById('song').value.trim();
     
     if (!artist || !song) {
-      alert("Lütfen hem sanatçı hem de şarkı ismini girin.");
+      showAlert("Lütfen hem sanatçı hem de şarkı ismini girin.");
       return;
     }
 
