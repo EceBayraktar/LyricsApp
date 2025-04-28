@@ -80,7 +80,7 @@ body {
     cursor: pointer;
     color: #333;
   }
-  
+  //* Özel alert kutusu için arka plan bulanıklığı */
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
