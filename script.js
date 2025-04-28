@@ -3,7 +3,7 @@ function getLyrics() {
     const song = document.getElementById('song').value.trim();
     
     if (!artist || !song) {
-      alert("Please enter both artist and song title.");
+      alert("Lütfen hem sanatçı hem de şarkı ismini girin.");
       return;
     }
 
@@ -13,17 +13,23 @@ function getLyrics() {
         if (data.lyrics) {
           document.getElementById('lyrics').innerText = data.lyrics;
         } else {
-          document.getElementById('lyrics').innerText = "Lyrics not found. Try another song.";
+          document.getElementById('lyrics').innerText = "Şarkı sözleri bulunamadı. Başka bir şarkı deneyin.";
         }
       })
       .catch(error => {
-        console.error('Error fetching lyrics:', error);
-        document.getElementById('lyrics').innerText = "Error fetching lyrics.";
+        console.error('Şarkı sözleri getirilirken hata oluştu:', error);
+        document.getElementById('lyrics').innerText = "Şarkı sözleri alınırken hata oluştu.";
       });
 }
 
 // Kullanıcı Enter tuşuna basarsa da şarkı sözünü getir
-document.addEventListener('keydown', function(event) {
+document.getElementById('artist').addEventListener('keydown', function(event) {
+  if (event.key === "Enter") {
+    getLyrics();
+  }
+});
+
+document.getElementById('song').addEventListener('keydown', function(event) {
   if (event.key === "Enter") {
     getLyrics();
   }
