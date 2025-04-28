@@ -6,7 +6,6 @@ body {
     height: 100vh;
     font-family: 'Poppins', sans-serif;
     display: flex;
-    text-align: center;
   }
   
   .container {
