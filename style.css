@@ -1,10 +1,14 @@
 body {
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    /* veya resim kullanmak istersen */
+    /* background-image: url('background.jpg'); */
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
     margin: 0;
     padding: 50px;
   }
+  
   
   .container {
     background: white;

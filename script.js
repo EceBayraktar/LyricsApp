@@ -6,6 +6,12 @@ function getLyrics() {
       alert("Please enter both artist and song title.");
       return;
     }
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Enter") {
+          getLyrics();
+        }
+      });
+      
   
     fetch(`https://api.lyrics.ovh/v1/${artist}/${song}`)
       .then(response => response.json())
