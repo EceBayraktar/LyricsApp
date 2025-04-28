@@ -39,3 +39,18 @@ document.getElementById('song').addEventListener('keydown', function(event) {
     getLyrics();
   }
 });
+
+// Özel alert kutusunu göster
+function showAlert(message) {
+    const alertBox = document.getElementById('alertBox');
+    const alertMessage = document.getElementById('alertMessage');
+    
+    alertMessage.innerText = message;
+    alertBox.style.display = "block";
+  }
+  
+  // Özel alert kutusunu kapat
+  function closeAlert() {
+    const alertBox = document.getElementById('alertBox');
+    alertBox.style.display = "none";
+  }
