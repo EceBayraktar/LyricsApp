@@ -1,16 +1,14 @@
 body {
     margin: 0;
-    padding: 0;
+    padding: 40px 20px; /* sayfa üst-alt boşluk */
     background: linear-gradient(135deg, #a7333f,#7d57a4, #949197);
     background-attachment: fixed;
     background-size: cover;
-    height: 100%;
+    min-height: 100vh;
     font-family: 'Poppins', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: auto; /* ARTIK tüm body scroll yapabiliyor */
+    overflow-x: hidden;
   }
+  
   
   .container {
     background: white;
