@@ -1,17 +1,15 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #a7333f, #b43b8f, #949197);
-    background-attachment: fixed; /* Ekle */
+    background: linear-gradient(135deg, #a7333f,  #b43b8f, #949197);
     background-size: cover;
+    height: 100%;
     font-family: 'Poppins', sans-serif;
-    min-height: 100vh; /* height yerine min-height */
     display: flex;
-    flex-direction: column; /* Flex direction ekle */
     align-items: center;
-    justify-content: flex-start; /* Başlangıca hizala */
+    justify-content: center;
+    overflow: auto; /* ARTIK tüm body scroll yapabiliyor */
   }
-  
   
   .container {
     background: white;
@@ -29,7 +27,6 @@ body {
     gap: 10px;
     justify-content: center;
     margin-top: 20px;
-    margin-bottom: 20px;
     flex-wrap: wrap;
   }
   
@@ -47,7 +44,7 @@ body {
     background-color: #5c6bc0;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
   }
   
@@ -65,7 +62,7 @@ body {
   
   .top-align {
     position: absolute;
-    top: 120px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
   }
