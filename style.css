@@ -1,15 +1,17 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #a7333f,  #b43b8f, #949197);
+    background: linear-gradient(135deg, #a7333f, #b43b8f, #949197);
+    background-attachment: fixed; /* Ekle */
     background-size: cover;
-    height: 100%;
     font-family: 'Poppins', sans-serif;
+    min-height: 100vh; /* height yerine min-height */
     display: flex;
+    flex-direction: column; /* Flex direction ekle */
     align-items: center;
-    justify-content: center;
-    overflow: auto; /* ARTIK tüm body scroll yapabiliyor */
+    justify-content: flex-start; /* Başlangıca hizala */
   }
+  
   
   .container {
     background: white;
