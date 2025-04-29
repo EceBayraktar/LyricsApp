@@ -3,7 +3,8 @@ body {
     padding: 0;
     background: linear-gradient(135deg, #a7333f,#7d57a4, #949197);
     background-attachment: fixed;
-    background-size: cover;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     min-height: 100vh;
     font-family: 'Poppins', sans-serif;
     display: flex;
