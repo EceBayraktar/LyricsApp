@@ -1,9 +1,9 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #a7333f, #949197);
+    background: linear-gradient(135deg, #a7333f,#7d57a4, #949197);
     background-size: cover;
-    height: 100vh;
+    height: 100%;
     font-family: 'Poppins', sans-serif;
     display: flex;
     align-items: center;
