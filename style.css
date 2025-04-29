@@ -1,27 +1,41 @@
+/* Arka plan ve genel düzen */
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #a7333f,  #b43b8f, #949197);
-    background-size: cover;
-    height: 100%;
     font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #a7333f, #b43b8f, #949197);
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: auto; /* ARTIK tüm body scroll yapabiliyor */
   }
   
+  /* Container: Ortada başlar, sonra yukarı kayar */
   .container {
     background: white;
-    padding: 20px;
+    padding: 20px 30px;
     border-radius: 10px;
-    text-align: center;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
     transition: all 0.5s ease;
-    width: 600px;
-    max-width: 100%;
+    margin-top: 0;
+    position: relative;
   }
   
+  /* Container yukarı kayınca */
+  .top-align {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Input ve buton grubu */
   .input-group {
     display: flex;
     gap: 10px;
@@ -30,6 +44,7 @@ body {
     flex-wrap: wrap;
   }
   
+  /* Input kutuları */
   input {
     padding: 10px;
     font-size: 16px;
@@ -38,6 +53,7 @@ body {
     border-radius: 5px;
   }
   
+  /* Buton */
   button {
     padding: 10px 20px;
     font-size: 16px;
@@ -48,23 +64,19 @@ body {
     cursor: pointer;
   }
   
+  /* Şarkı sözleri alanı */
   pre {
-    background: #eee;
+    background: #f7f7f7;
     padding: 20px;
     margin-top: 30px;
     text-align: left;
     white-space: pre-wrap;
     word-wrap: break-word;
     border-radius: 10px;
-    overflow-x: auto;
-    max-width: 90%;
-  }
-  
-  .top-align {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    overflow-y: auto;
+    max-height: 500px;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   /* Alert kutusu */
@@ -83,6 +95,7 @@ body {
     animation: fadeIn 0.3s ease;
   }
   
+  /* Alert kapatma butonu */
   .close-btn {
     position: absolute;
     top: 8px;
@@ -93,8 +106,31 @@ body {
     color: #333;
   }
   
+  /* Fade animasyonu */
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+  }
+  
+  /* Önceki arama geçmişi */
+  #history {
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  #history ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #history li {
+    cursor: pointer;
+    margin-bottom: 5px;
+    color: #333;
+    transition: color 0.2s;
+  }
+  
+  #history li:hover {
+    color: #5c6bc0;
   }
   
