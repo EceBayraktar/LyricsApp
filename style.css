@@ -20,7 +20,8 @@ body {
     text-align: center;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     transition: all 0.5s ease;
-    width: 300px;
+    width: 600px;
+    max-width: 90%;
   }
   
   .input-group {
@@ -32,7 +33,7 @@ body {
   }
   
   input {
-    padding: 15px;
+    padding: 10px;
     font-size: 16px;
     width: 200px;
     border: 1px solid #ccc;
