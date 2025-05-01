@@ -15,12 +15,13 @@ body {
   
   .container {
     background: white;
+    display: inline-block;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     transition: all 0.5s ease;
-    width: 300px;
+    width: 600px;
     max-width: 90%;
   }
   
@@ -33,7 +34,7 @@ body {
   }
   
   input {
-    padding: 10px;
+    padding: 15px;
     font-size: 16px;
     width: 200px;
     border: 1px solid #ccc;
@@ -53,13 +54,19 @@ body {
   pre {
     background: #eee;
     padding: 20px;
-    margin-top: 30px;
+    margin-top: 60px;
     text-align: left;
     white-space: pre-wrap;
     word-wrap: break-word;
     border-radius: 10px;
     overflow-x: auto;
     max-width: 90%;
+    display: none;     /* input'tan sonra boşluk */
+    max-width: 600px;      /* genişliği sınırla */
+    margin-left: auto;     /* ortalamak için */
+    margin-right: auto; 
+    white-space: pre-wrap; /* satır sonlarını koru ama satırları taşırma */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
   .top-align {
@@ -93,18 +100,6 @@ body {
     font-weight: bold;
     cursor: pointer;
     color: #333;
-  }
-  #lyrics {
-    display: none;
-    margin-top: 50px;      /* input'tan sonra boşluk */
-    max-width: 600px;      /* genişliği sınırla */
-    margin-left: auto;     /* ortalamak için */
-    margin-right: auto;    /* ortalamak için */
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 8px;
-    white-space: pre-wrap; /* satır sonlarını koru ama satırları taşırma */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
   @keyframes fadeIn {
