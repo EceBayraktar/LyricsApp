@@ -94,6 +94,18 @@ body {
     cursor: pointer;
     color: #333;
   }
+  #lyrics {
+    display: none;
+    margin-top: 50px;      /* input'tan sonra boşluk */
+    max-width: 600px;      /* genişliği sınırla */
+    margin-left: auto;     /* ortalamak için */
+    margin-right: auto;    /* ortalamak için */
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 8px;
+    white-space: pre-wrap; /* satır sonlarını koru ama satırları taşırma */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
   
   @keyframes fadeIn {
     from { opacity: 0; }
