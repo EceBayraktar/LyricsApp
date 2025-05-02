@@ -13,6 +13,7 @@ function getLyrics() {
         const lyricsElement = document.getElementById('lyrics');
         if (data.lyrics) {
           lyricsElement.innerText = data.lyrics;
+          saveToHistory(artist, song); // ✅ Başarılıysa geçmişe kaydet
         } else {
           lyricsElement.innerText = "Şarkı sözleri bulunamadı. Başka bir şarkı deneyin.";
         }
@@ -69,9 +70,6 @@ function getLyrics() {
   
     displayHistory();
   }
-  
-  // 🎯 Aramayı localStorage'a ekle
-  saveToHistory(artist, song);
 
   // Geçmişi ekranda göster
   function displayHistory() {
