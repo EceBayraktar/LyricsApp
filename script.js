@@ -143,5 +143,6 @@ function getLyrics() {
   window.onload = () => {
     displayHistory();
     updateAutocompleteSuggestions();
+    updateSongSuggestionsForArtist();
   };
   
