@@ -106,20 +106,31 @@ function getLyrics() {
 
   function updateAutocompleteSuggestions() {
     const history = JSON.parse(localStorage.getItem("lyricsHistory")) || [];
-    const artistSet = new Set();
-    const datalist = document.getElementById("artistSuggestions");
-    datalist.innerHTML = "";
   
-    history.forEach(item => {
-      if (item.artist) {
-        artistSet.add(item.artist.trim());
-      }
+    const artistSet = new Set();
+    const songSet = new Set();
+  
+    history.forEach(entry => {
+      artistSet.add(entry.artist);
+      songSet.add(entry.song);
     });
+  
+    const artistSuggestions = document.getElementById("artistSuggestions");
+    const songSuggestions = document.getElementById("songSuggestions");
+  
+    artistSuggestions.innerHTML = "";
+    songSuggestions.innerHTML = "";
   
     artistSet.forEach(artist => {
       const option = document.createElement("option");
       option.value = artist;
-      datalist.appendChild(option);
+      artistSuggestions.appendChild(option);
+    });
+  
+    songSet.forEach(song => {
+      const option = document.createElement("option");
+      option.value = song;
+      songSuggestions.appendChild(option);
     });
   }
   

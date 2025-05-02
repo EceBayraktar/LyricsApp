@@ -12,7 +12,8 @@
   
   <input list="artistSuggestions" id="artist" type="text" placeholder="Artist Name">
   <datalist id="artistSuggestions"></datalist>
-  <input id="song" type="text" placeholder="Song Name" autocomplete="on">
+  <input list="songSuggestions" id="song" type="text" placeholder="Song Name" autocomplete="on">
+  <datalist id="songSuggestions"></datalist>
   <button onclick="getLyrics()">Get Lyrics</button>
   
   <pre id="lyrics" style="display: none;" >Lyrics will appear here...</pre>
