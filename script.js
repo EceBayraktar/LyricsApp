@@ -103,9 +103,30 @@ function getLyrics() {
       list.appendChild(li);
     });
   }
+
+  function updateAutocompleteSuggestions() {
+    const history = JSON.parse(localStorage.getItem("lyricsHistory")) || [];
+    const artistSet = new Set();
+    const datalist = document.getElementById("artistSuggestions");
+    datalist.innerHTML = "";
+  
+    history.forEach(item => {
+      if (item.artist) {
+        artistSet.add(item.artist.trim());
+      }
+    });
+  
+    artistSet.forEach(artist => {
+      const option = document.createElement("option");
+      option.value = artist;
+      datalist.appendChild(option);
+    });
+  }
+  
   
   // Sayfa yüklendiğinde geçmişi göster
   window.onload = () => {
     displayHistory();
+    updateAutocompleteSuggestions();
   };
   
