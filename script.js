@@ -1,14 +1,15 @@
 function getLyrics() {
     const artist = document.getElementById('artist').value.trim();
     const song = document.getElementById('song').value.trim();
-    
+  
     if (!artist || !song) {
       showAlert("Lütfen hem sanatçı hem de şarkı ismini girin.");
       return;
     }
-
+  
+    // 🎯 Aramayı localStorage'a ekle
     saveToHistory(artist, song);
-
+  
     fetch(`https://api.lyrics.ovh/v1/${artist}/${song}`)
       .then(response => response.json())
       .then(data => {
@@ -18,35 +19,35 @@ function getLyrics() {
         } else {
           lyricsElement.innerText = "Şarkı sözleri bulunamadı. Başka bir şarkı deneyin.";
         }
-        lyricsElement.style.display = "block"; // Sözleri göster
-        document.getElementById('container').classList.add('top-align'); // Yukarı taşı
+        lyricsElement.style.display = "block";
+        document.getElementById('container').classList.add('top-align');
       })
       .catch(error => {
         console.error('Şarkı sözleri getirilirken hata oluştu:', error);
         const lyricsElement = document.getElementById('lyrics');
         lyricsElement.innerText = "Şarkı sözleri alınırken hata oluştu.";
-        lyricsElement.style.display = "block"; // Hata bile olsa alanı göster
+        lyricsElement.style.display = "block";
         document.getElementById('container').classList.add('top-align');
       });
-}
-
-// Enter tuşu ile de çalıştır
-document.getElementById('artist').addEventListener('keydown', function(event) {
-  if (event.key === "Enter") {
-    getLyrics();
   }
-});
-document.getElementById('song').addEventListener('keydown', function(event) {
-  if (event.key === "Enter") {
-    getLyrics();
-  }
-});
-
-// Özel alert kutusunu göster
-function showAlert(message) {
+  
+  // Enter tuşu ile de çalıştır
+  document.getElementById('artist').addEventListener('keydown', function(event) {
+    if (event.key === "Enter") {
+      getLyrics();
+    }
+  });
+  document.getElementById('song').addEventListener('keydown', function(event) {
+    if (event.key === "Enter") {
+      getLyrics();
+    }
+  });
+  
+  // Özel alert kutusunu göster
+  function showAlert(message) {
     const alertBox = document.getElementById('alertBox');
     const alertMessage = document.getElementById('alertMessage');
-    
+  
     alertMessage.innerText = message;
     alertBox.style.display = "block";
   }
@@ -56,7 +57,8 @@ function showAlert(message) {
     const alertBox = document.getElementById('alertBox');
     alertBox.style.display = "none";
   }
-
+  
+  // Geçmişe ekle
   function saveToHistory(artist, song) {
     const history = JSON.parse(localStorage.getItem("lyricsHistory")) || [];
     const entry = { artist, song };
@@ -81,6 +83,7 @@ function showAlert(message) {
       const li = document.createElement("li");
       li.textContent = `${item.artist} - ${item.song}`;
       li.style.cursor = "pointer";
+      li.style.marginBottom = "5px";
       li.onclick = () => {
         document.getElementById("artist").value = item.artist;
         document.getElementById("song").value = item.song;
@@ -94,3 +97,4 @@ function showAlert(message) {
   window.onload = () => {
     displayHistory();
   };
+  
