@@ -58,6 +58,10 @@ function getLyrics() {
   
   // Geçmişe ekle
   function saveToHistory(artist, song) {
+    if (!artist.trim() || !song.trim()) {
+        return; // ⚠️ Boş ise kaydetme
+      }
+
     const history = JSON.parse(localStorage.getItem("lyricsHistory")) || [];
     const entry = { artist, song };
   
@@ -75,8 +79,17 @@ function getLyrics() {
   function displayHistory() {
     const history = JSON.parse(localStorage.getItem("lyricsHistory")) || [];
     const list = document.getElementById("history");
+    const historyContainer = document.getElementById("historyContainer"); // Bu div tüm geçmiş bölümünü sarmalı
+
     list.innerHTML = ""; // Öncekileri temizle
-  
+
+    if (history.length === 0) {
+        historyContainer.style.display = "none"; // Hiç geçmiş yoksa gizle
+        return;
+    }
+
+    historyContainer.style.display = "block"; // Geçmiş varsa göster
+    
     history.forEach(item => {
       const li = document.createElement("li");
       li.textContent = `${item.artist} - ${item.song}`;
