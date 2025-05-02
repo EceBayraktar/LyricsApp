@@ -7,9 +7,6 @@ function getLyrics() {
       return;
     }
   
-    // 🎯 Aramayı localStorage'a ekle
-    saveToHistory(artist, song);
-  
     fetch(`https://api.lyrics.ovh/v1/${artist}/${song}`)
       .then(response => response.json())
       .then(data => {
@@ -73,10 +70,13 @@ function getLyrics() {
     displayHistory();
   }
   
+  // 🎯 Aramayı localStorage'a ekle
+  saveToHistory(artist, song);
+
   // Geçmişi ekranda göster
   function displayHistory() {
     const history = JSON.parse(localStorage.getItem("lyricsHistory")) || [];
-    const list = document.getElementById("historyList");
+    const list = document.getElementById("history");
     list.innerHTML = ""; // Öncekileri temizle
   
     history.forEach(item => {
