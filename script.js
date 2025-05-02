@@ -13,7 +13,7 @@ function getLyrics() {
         const lyricsElement = document.getElementById('lyrics');
         if (data.lyrics) {
           lyricsElement.innerText = data.lyrics;
-          saveToHistory(artist, song); // ✅ Başarılıysa geçmişe kaydet
+          saveToHistory(artist, song); // Başarılıysa kaydet
         } else {
           lyricsElement.innerText = "Şarkı sözleri bulunamadı. Başka bir şarkı deneyin.";
         }
@@ -29,67 +29,58 @@ function getLyrics() {
       });
   }
   
-  // Enter tuşu ile de çalıştır
+  // Enter tuşu ile arama
   document.getElementById('artist').addEventListener('keydown', function(event) {
-    if (event.key === "Enter") {
-      getLyrics();
-    }
+    if (event.key === "Enter") getLyrics();
   });
   document.getElementById('song').addEventListener('keydown', function(event) {
-    if (event.key === "Enter") {
-      getLyrics();
-    }
+    if (event.key === "Enter") getLyrics();
   });
   
-  // Özel alert kutusunu göster
+  // Alert kutusu
   function showAlert(message) {
     const alertBox = document.getElementById('alertBox');
     const alertMessage = document.getElementById('alertMessage');
-  
     alertMessage.innerText = message;
     alertBox.style.display = "block";
   }
   
-  // Özel alert kutusunu kapat
   function closeAlert() {
-    const alertBox = document.getElementById('alertBox');
-    alertBox.style.display = "none";
+    document.getElementById('alertBox').style.display = "none";
   }
   
-  // Geçmişe ekle
+  // Geçmişe kaydet
   function saveToHistory(artist, song) {
-    if (!artist.trim() || !song.trim()) {
-        return; // ⚠️ Boş ise kaydetme
-      }
-
+    if (!artist.trim() || !song.trim()) return;
+  
     const history = JSON.parse(localStorage.getItem("lyricsHistory")) || [];
     const entry = { artist, song };
   
-    // Aynı şarkı varsa tekrar ekleme
     if (!history.some(item => item.artist === artist && item.song === song)) {
-      history.unshift(entry); // En yeni başta
-      if (history.length > 10) history.pop(); // En fazla 10 kayıt tut
+      history.unshift(entry);
+      if (history.length > 10) history.pop(); // Sadece son 10
       localStorage.setItem("lyricsHistory", JSON.stringify(history));
     }
   
     displayHistory();
+    updateAutocompleteSuggestions(); // Güncelle
   }
-
-  // Geçmişi ekranda göster
+  
+  // Geçmişi göster
   function displayHistory() {
     const history = JSON.parse(localStorage.getItem("lyricsHistory")) || [];
     const list = document.getElementById("history");
-    const historyContainer = document.getElementById("historyContainer"); // Bu div tüm geçmiş bölümünü sarmalı
-
-    list.innerHTML = ""; // Öncekileri temizle
-
+    const historyContainer = document.getElementById("historyContainer");
+  
+    list.innerHTML = "";
+  
     if (history.length === 0) {
-        historyContainer.style.display = "none"; // Hiç geçmiş yoksa gizle
-        return;
+      historyContainer.style.display = "none";
+      return;
     }
-
-    historyContainer.style.display = "block"; // Geçmiş varsa göster
-
+  
+    historyContainer.style.display = "block";
+  
     history.forEach(item => {
       const li = document.createElement("li");
       li.textContent = `${item.artist} - ${item.song}`;
@@ -103,41 +94,53 @@ function getLyrics() {
       list.appendChild(li);
     });
   }
-
+  
+  // Otomatik tamamlama: Sanatçılar için ve sanatçı seçilince şarkılar için
   function updateAutocompleteSuggestions() {
     const history = JSON.parse(localStorage.getItem("lyricsHistory")) || [];
   
     const artistSet = new Set();
-    const songSet = new Set();
-  
-    history.forEach(entry => {
-      artistSet.add(entry.artist);
-      songSet.add(entry.song);
-    });
+    history.forEach(entry => artistSet.add(entry.artist));
   
     const artistSuggestions = document.getElementById("artistSuggestions");
-    const songSuggestions = document.getElementById("songSuggestions");
-  
     artistSuggestions.innerHTML = "";
-    songSuggestions.innerHTML = "";
-  
     artistSet.forEach(artist => {
       const option = document.createElement("option");
       option.value = artist;
       artistSuggestions.appendChild(option);
     });
   
-    songSet.forEach(song => {
+    updateSongSuggestionsForArtist(); // sayfa yüklenince de çağır
+  }
+  
+  // Sadece o sanatçıya ait şarkıları göster
+  function updateSongSuggestionsForArtist() {
+    const artist = document.getElementById("artist").value.trim().toLowerCase();
+    const history = JSON.parse(localStorage.getItem("lyricsHistory")) || [];
+    const songSuggestions = document.getElementById("songSuggestions");
+  
+    songSuggestions.innerHTML = "";
+  
+    const matchedSongs = new Set();
+    history.forEach(entry => {
+      if (entry.artist.toLowerCase() === artist) {
+        matchedSongs.add(entry.song);
+      }
+    });
+  
+    matchedSongs.forEach(song => {
       const option = document.createElement("option");
       option.value = song;
       songSuggestions.appendChild(option);
     });
   }
   
-  
-  // Sayfa yüklendiğinde geçmişi göster
+  // Sayfa yüklendiğinde
   window.onload = () => {
     displayHistory();
     updateAutocompleteSuggestions();
   };
+  
+  // Sanatçı her değiştiğinde ilgili şarkıları göster
+  document.getElementById("artist").addEventListener("input", updateSongSuggestionsForArtist);
   
