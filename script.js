@@ -89,7 +89,7 @@ function getLyrics() {
     }
 
     historyContainer.style.display = "block"; // Geçmiş varsa göster
-    
+
     history.forEach(item => {
       const li = document.createElement("li");
       li.textContent = `${item.artist} - ${item.song}`;
